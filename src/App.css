@@ -1,0 +1,15 @@
+body {
+  font-family: "Manrope";
+  line-height: 22px;
+  background-image: url(./assets/img/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #dcdcdc;
+  color: #04081d;
+}
+
+.side-bar {
+  height: calc(100vh - 18px);
+}
