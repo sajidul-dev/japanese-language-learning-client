@@ -1,8 +1,12 @@
 import { Suspense, useMemo } from "react";
 import { useRoutes } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
+// import Layout from "../components/Layout/Layout";
 import { Spinner } from "../components/Elements/Spinner/Spinner";
 import { lazyImport } from "../utils/lazyImport";
+import MainLayout from "@/components/Layout/MainLayout";
+import Registration from "@/features/Auth/SignUp/routes/SignUp";
+import Signin from "@/features/Auth/SignIn/routes/Signin";
+import SignUp from "@/features/Auth/SignUp/routes/SignUp";
 
 const { Report } = lazyImport(() => import("../features/Report"), "Report");
 const { Users } = lazyImport(() => import("../features/Report"), "Users");
@@ -17,10 +21,10 @@ export const AppRoutes = () => {
     () => [
       {
         path: "/",
-        element: <Layout />,
+        element: <MainLayout />,
         children: [
           {
-            path: "report",
+            path: "lessons",
             element: (
               <Suspense fallback={<Spinner />}>
                 <Report />
@@ -28,7 +32,7 @@ export const AppRoutes = () => {
             ),
           },
           {
-            path: "users",
+            path: "tutorials",
             element: (
               <Suspense fallback={<Spinner />}>
                 <Users />
@@ -36,7 +40,7 @@ export const AppRoutes = () => {
             ),
           },
           {
-            path: "products",
+            path: "vocabularies",
             element: (
               <Suspense fallback={<Spinner />}>
                 <Products />
@@ -52,6 +56,22 @@ export const AppRoutes = () => {
             ),
           },
         ],
+      },
+      {
+        path: "sign-up",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <SignUp />
+          </Suspense>
+        ),
+      },
+      {
+        path: "sign-in",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Signin />
+          </Suspense>
+        ),
       },
     ],
     []

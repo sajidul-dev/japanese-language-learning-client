@@ -1,7 +1,7 @@
 export const Landing = () => {
   return (
     <p className="container mx-auto">
-      <p>Welcome to customer data analysis</p>
+      <p>Welcome to japanese learning platformsssss</p>
     </p>
   );
 };
