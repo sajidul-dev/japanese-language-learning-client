@@ -4,9 +4,10 @@ import { useRoutes } from "react-router-dom";
 import { Spinner } from "../components/Elements/Spinner/Spinner";
 import { lazyImport } from "../utils/lazyImport";
 import MainLayout from "@/components/Layout/MainLayout";
-import Registration from "@/features/Auth/SignUp/routes/SignUp";
 import Signin from "@/features/Auth/SignIn/routes/Signin";
 import SignUp from "@/features/Auth/SignUp/routes/SignUp";
+import DashboardLayout from "@/components/Layout/DashboardLayout";
+import AllUsers from "@/features/Dashboard/User/routes/Users";
 
 const { Report } = lazyImport(() => import("../features/Report"), "Report");
 const { Users } = lazyImport(() => import("../features/Report"), "Users");
@@ -52,6 +53,20 @@ export const AppRoutes = () => {
             element: (
               <Suspense fallback={<Spinner />}>
                 <PurchaseHistory />
+              </Suspense>
+            ),
+          },
+        ],
+      },
+      {
+        path: "/dashboard/",
+        element: <DashboardLayout />,
+        children: [
+          {
+            path: "users",
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <AllUsers />
               </Suspense>
             ),
           },
