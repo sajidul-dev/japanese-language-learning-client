@@ -102,6 +102,11 @@ const SignUp = () => {
             <div className="relative">
               <input
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleRegistration();
+                  }
+                }}
                 className="w-full outline-none border-2 border-gray-700 focus:border-blue-500 bg-gray-300 rounded-md px-3 py-2"
                 type="password"
                 name=""
@@ -119,7 +124,7 @@ const SignUp = () => {
               }}
               className="bg-teal-400 hover:bg-teal-500 transition-all duration-300 ease-in text-white px-10 py-2 rounded-full"
             >
-              Create
+              {createUserMutation.isLoading ? "Creating..." : "Create"}
             </button>
           </div>
 
